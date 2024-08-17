@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Police Station Tycoon</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="header">
+            <h1>Police Station Tycoon</h1>
+            <div id="resources">
+                <p>Cash: <span id="cash">1000</span></p>
+                <p>Gems: <span id="gems">50</span></p>
+            </div>
+            <div id="menu">
+                <button onclick="saveGame()">Save Game</button>
+                <button onclick="loadGame()">Load Game</button>
+                <button onclick="resetGame()">Reset Game</button>
+            </div>
+        </div>
+        <div id="controls">
+            <button onclick="hireEmployee('officer')">Hire Officer</button>
+            <button onclick="hireEmployee('receptionist')">Hire Receptionist</button>
+            <button onclick="hireDetective()">Hire Detective</button>
+            <button onclick="buildStructure('cell')">Build Prison Cell</button>
+            <button onclick="buildStructure('isolation')">Build Isolation Cell</button>
+            <button onclick="buildStructure('interrogation')">Build Interrogation Room</button>
+            <button onclick="buildStructure('armory')">Build Armory</button>
+            <button onclick="startCase('easy')">Start Easy Case</button>
+            <button onclick="startCase('medium')">Start Medium Case</button>
+            <button onclick="startCase('hard')">Start Hard Case</button>
+        </div>
+        <div id="station">
+            <h2>Police Station</h2>
+            <div id="employees">
+                <h3>Employees</h3>
+                <ul id="employee-list"></ul>
+            </div>
+            <div id="structures">
+                <h3>Structures</h3>
+                <ul id="structure-list"></ul>
+            </div>
+            <div id="criminals">
+                <h3>Criminals</h3>
+                <ul id="criminal-list"></ul>
+            </div>
+        </div>
+        <div id="stats">
+            <h3>Statistics</h3>
+            <canvas id="cashGraph"></canvas>
+            <canvas id="employeeGraph"></canvas>
+            <div id="stats-details">
+                <p>Total Criminals Arrested: <span id="total-criminals">0</span></p>
+                <p>Total Cases Solved: <span id="total-cases">0</span></p>
+            </div>
+        </div>
+        <audio id="background-music" loop>
+            <source src="music/background.mp3" type="audio/mp3">
+        </audio>
+        <audio id="cash-sound">
+            <source src="sounds/cash.mp3" type="audio/mp3">
+        </audio>
+        <audio id="alert-sound">
+            <source src="sounds/alert.mp3" type="audio/mp3">
+        </audio>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
