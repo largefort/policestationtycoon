@@ -30,15 +30,15 @@ const structureCapacity = {
 };
 
 const caseDifficulty = {
-    easy: { time: 60, reward: 100 },
-    medium: { time: 120, reward: 200 },
-    hard: { time: 240, reward: 500 }
+    easy: { time: 60, reward: 100, gems: 5 },
+    medium: { time: 120, reward: 200, gems: 10 },
+    hard: { time: 240, reward: 500, gems: 20 }
 };
 
 const missions = [
-    { description: 'Arrest 5 criminals', check: () => totalCriminals >= 5, reward: 500 },
-    { description: 'Solve 3 cases', check: () => totalCasesSolved >= 3, reward: 300 },
-    { description: 'Build 3 cells', check: () => structures.filter(s => s.type === 'cell').length >= 3, reward: 700 }
+    { description: 'Arrest 5 criminals', check: () => totalCriminals >= 5, reward: 500, gems: 10 },
+    { description: 'Solve 3 cases', check: () => totalCasesSolved >= 3, reward: 300, gems: 15 },
+    { description: 'Build 3 cells', check: () => structures.filter(s => s.type === 'cell').length >= 3, reward: 700, gems: 20 }
 ];
 
 document.getElementById('background-music').play();
@@ -91,8 +91,9 @@ function startCase(difficulty) {
         setTimeout(() => {
             availableDetective.solvingCase = false;
             cash += caseDifficulty[difficulty].reward;
+            gems += caseDifficulty[difficulty].gems;
             totalCasesSolved += 1;
-            alert(`${difficulty.charAt(0).toUpperCase() + difficulty.slice(1)} case solved! Reward: ${caseDifficulty[difficulty].reward} cash`);
+            alert(`${difficulty.charAt(0).toUpperCase() + difficulty.slice(1)} case solved! Reward: ${caseDifficulty[difficulty].reward} cash and ${caseDifficulty[difficulty].gems} gems.`);
             updateGraphs();
             updateUI();
         }, caseDifficulty[difficulty].time * 1000); // Time in seconds
@@ -249,7 +250,8 @@ function checkMissions() {
     missions.forEach((mission, index) => {
         if (mission.check()) {
             cash += mission.reward;
-            alert(`Mission Complete: ${mission.description}. Reward: ${mission.reward} cash.`);
+            gems += mission.gems;
+            alert(`Mission Complete: ${mission.description}. Reward: ${mission.reward} cash and ${mission.gems} gems.`);
             missions.splice(index, 1);
         }
     });
