@@ -1,5 +1,5 @@
 let cash = 1000;
-let gems = 50;
+let gems = 1000;
 let employees = [];
 let structures = [];
 let criminals = [];
